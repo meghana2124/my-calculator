@@ -34,6 +34,13 @@ def divide(a, b):
     return result
 
 # TODO: Students will add multiply, divide, power, sqrt functions
+def multiply (a, b) :
+# ''' "Multiply two nurnbers '''
+    return a * b
+
+def divide (a, b) :
+# ''' "Divide a by b'''
+    return a / b
 
 if __name__ == "__main__":
     print("🧮 Calculator Module")
