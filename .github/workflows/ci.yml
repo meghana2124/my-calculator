@@ -52,7 +52,7 @@ jobs:
       - name: Run tests (verbose)
         run: pytest tests/ -v
 
-  Coverage stage: run coverage and upload HTML report
+  # Coverage stage: run coverage and upload HTML report
   coverage:
     runs-on: ubuntu-latest
     needs: test
