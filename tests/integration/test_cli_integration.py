@@ -11,7 +11,7 @@ class TestCLIIntegration:
     def run_cli(self, *args):
         """Helper method to run CLI and capture output"""
         # Note: Fixed curly quotes ' to straight quotes ' in '-m'
-        cmd = [sys.executable, '-m', 'src.cli'] + list(args)
+        cmd = [sys.executable, '-m', 'src.CLI'] + list(args)
         result = subprocess.run(cmd, capture_output=True, text=True, cwd='.')
         return result
 
