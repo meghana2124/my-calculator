@@ -5,13 +5,13 @@ import subprocess
 import sys
 import pytest
 
+
 class TestCLIIntegration:
     """Test CLI application integrating with calculator module"""
 
     def run_cli(self, *args):
         """Helper method to run CLI and capture output"""
-        # Note: Fixed curly quotes ' to straight quotes ' in '-m'
-        cmd = [sys.executable, '-m', 'src.CLI'] + list(args)
+        cmd = [sys.executable, '-m', 'src.cli'] + list(args)
         result = subprocess.run(cmd, capture_output=True, text=True, cwd='.')
         return result
 
@@ -43,7 +43,6 @@ class TestCLIIntegration:
         """Test CLI properly handles calculator errors"""
         result = self.run_cli('divide', '10', '0')
         assert result.returncode == 1
-        # The expected output should ideally be checked against the stderr, but based on the original test structure, we check stdout.
         assert 'Cannot divide by zero' in result.stdout
 
     def test_cli_invalid_operation_integration(self):
@@ -61,9 +60,9 @@ class TestCalculatorModuleIntegration:
         from src.calculator import add, multiply, divide
 
         # Calculate (5 + 3) * 2 / 4
-        step1 = add(5, 3)     # 8
-        step2 = multiply(step1, 2) # 16
-        step3 = divide(step2, 4)   # 4
+        step1 = add(5, 3)  # 8
+        step2 = multiply(step1, 2)  # 16
+        step3 = divide(step2, 4)  # 4
 
         assert step3 == 4.0
 
@@ -72,8 +71,9 @@ class TestCalculatorModuleIntegration:
         from src.calculator import power, square_root, add
 
         # Calculate sqrt(3^2 + 4^2) = 5 (Pythagorean theorem)
-        a_squared = power(3, 2)       # 9
-        b_squared = power(4, 2)       # 16
-        sum_squares = add(a_squared, b_squared) # 25
+        a_squared = power(3, 2)  # 9
+        b_squared = power(4, 2)  # 16
+        sum_squares = add(a_squared, b_squared)  # 25
         hypotenuse = square_root(sum_squares)  # 5
-        assert hypotenuse == 5
+
+        assert hypotenuse == 5.0
